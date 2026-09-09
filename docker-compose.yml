@@ -1,0 +1,31 @@
+services:
+  puzzlebot_container:
+    build: .
+    image: puzzlebot-sim_image:latest
+    container_name: puzzlebot-sim_container
+    restart: unless-stopped
+    
+    privileged: true
+
+    ipc: host
+    network_mode: host
+
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - LIBGL_ALWAYS_INDIRECT=0
+
+    volumes:
+      - .:/root/puzzlebot-sim
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /etc/localtime:/etc/localtime:ro   
+      - /etc/timezone:/etc/timezone:ro     
+      - /dev:/dev                          
+
+    group_add:
+      - video
+      - dialout     
+      - plugdev
+
+    stdin_open: true
+    tty: true

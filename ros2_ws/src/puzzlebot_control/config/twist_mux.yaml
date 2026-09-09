@@ -1,0 +1,25 @@
+twist_mux:
+  ros__parameters:
+    locks:
+      e_stop:
+        topic: /lock
+        timeout: 0.0    
+        priority: 255 
+
+    topics:
+      joystick:
+        topic: /joy_teleop/cmd_vel
+        timeout: 0.1
+        priority: 200   
+      keyboard:            
+        topic: /keyboard/cmd_vel
+        timeout: 0.1
+        priority: 100
+      foxglove:
+        topic: /foxglove/cmd_vel
+        timeout: 0.1
+        priority: 90
+      template:
+        topic: /template/cmd_vel
+        timeout: 0.1
+        priority: 75

@@ -1,0 +1,10 @@
+forklift_controller:
+  ros__parameters:
+    update_rate: 15.0
+    max_z: 0.23825
+    step_size: 0.003
+    forks_joystick_axis: 7
+    kp: 5.0
+    joy_activate_threshold: 0.5
+    max_sim_velocity: 0.06
+    target_tolerance: 0.005

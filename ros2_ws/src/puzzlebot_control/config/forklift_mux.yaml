@@ -1,0 +1,21 @@
+forklift_controller:
+  ros__parameters:
+    locks:
+      e_stop:
+        topic: ~/lock
+        timeout: 0.0    
+        priority: 90   
+
+    topics:
+      joystick:
+        topic: /joy
+        timeout: 0.2
+        priority: 255
+      foxglove_twist:
+        topic: ~/foxglove/target
+        timeout: 0.2
+        priority: 100
+      template:
+        topic: ~/template/target
+        timeout: 0.0
+        priority: 90

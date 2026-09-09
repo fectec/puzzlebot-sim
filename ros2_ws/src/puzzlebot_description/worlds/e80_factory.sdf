@@ -1,0 +1,1249 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+  <world name="factory_world">
+
+    <physics name="fast_physics" type="ignored">
+      <max_step_size>0.004</max_step_size>                
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+    </physics>
+
+    <plugin filename="libignition-gazebo-physics-system.so" name="ignition::gazebo::systems::Physics"/>
+    <plugin filename="libignition-gazebo-user-commands-system.so" name="ignition::gazebo::systems::UserCommands"/>
+    <plugin filename="libignition-gazebo-scene-broadcaster-system.so" name="ignition::gazebo::systems::SceneBroadcaster"/>
+    <plugin filename="libignition-gazebo-contact-system.so" name="ignition::gazebo::systems::Contact"/>
+
+    <scene>
+      <shadows>false</shadows>
+      <grid>false</grid>                                  
+    </scene>
+
+    <light type="directional" name="sun">
+      <cast_shadows>false</cast_shadows>                  
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.5 0.5 0.5 1</specular>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="factory_walls">
+      <static>true</static>
+
+      <link name="north_wall">
+        <pose>0 1.841 0.201 0 0 0</pose> 
+        <collision name="north_col">
+          <geometry><box><size>4.884 0.016 0.402</size></box></geometry>
+        </collision>
+        <visual name="north_vis">
+          <geometry><box><size>4.884 0.016 0.402</size></box></geometry>
+          <material>
+            <ambient>0.45 0.45 0.45 1</ambient>
+            <diffuse>0.45 0.45 0.45 1</diffuse>
+          </material>
+        </visual>
+        
+        <visual name="aruco_0_vis">
+          <pose>1.326 -0.009 0.039 0 0 0</pose>
+          <geometry><box><size>0.2 0.002 0.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse><emissive>1 1 1 1</emissive>
+            <pbr>
+              <metal>
+                <albedo_map>model://puzzlebot_description/materials/textures/4x4_1000-0.png</albedo_map>
+                <emissive_map>model://puzzlebot_description/materials/textures/4x4_1000-0.png</emissive_map>
+                <roughness>1.0</roughness><metalness>0.0</metalness>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+
+        <visual name="aruco_4_vis">
+          <pose>-1.326 -0.009 0.039 0 0 0</pose>
+          <geometry><box><size>0.2 0.002 0.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse><emissive>1 1 1 1</emissive>
+            <pbr>
+              <metal>
+                <albedo_map>model://puzzlebot_description/materials/textures/4x4_1000-4.png</albedo_map>
+                <emissive_map>model://puzzlebot_description/materials/textures/4x4_1000-4.png</emissive_map>
+                <roughness>1.0</roughness><metalness>0.0</metalness>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+
+      <link name="south_wall">
+        <pose>0 -1.841 0.201 0 0 0</pose> 
+        <collision name="south_col">
+          <geometry><box><size>4.884 0.016 0.402</size></box></geometry>
+        </collision>
+        <visual name="south_vis">
+          <geometry><box><size>4.884 0.016 0.402</size></box></geometry>
+          <material><ambient>0.45 0.45 0.45 1</ambient><diffuse>0.45 0.45 0.45 1</diffuse></material>
+        </visual>
+        
+        <visual name="aruco_2_vis">
+          <pose>1.326 0.009 0.039 0 0 0</pose>
+          <geometry><box><size>0.2 0.002 0.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse><emissive>1 1 1 1</emissive>
+            <pbr>
+              <metal>
+                <albedo_map>model://puzzlebot_description/materials/textures/4x4_1000-2.png</albedo_map>
+                <emissive_map>model://puzzlebot_description/materials/textures/4x4_1000-2.png</emissive_map>
+                <roughness>1.0</roughness><metalness>0.0</metalness>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+
+        <visual name="aruco_3_vis">
+          <pose>-1.326 0.009 0.039 0 0 0</pose>
+          <geometry><box><size>0.2 0.002 0.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse><emissive>1 1 1 1</emissive>
+            <pbr>
+              <metal>
+                <albedo_map>model://puzzlebot_description/materials/textures/4x4_1000-3.png</albedo_map>
+                <emissive_map>model://puzzlebot_description/materials/textures/4x4_1000-3.png</emissive_map>
+                <roughness>1.0</roughness><metalness>0.0</metalness>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+
+      <link name="east_wall">
+        <pose>2.434 0 0.201 0 0 0</pose> 
+        <collision name="east_col">
+          <geometry><box><size>0.016 3.666 0.402</size></box></geometry>
+        </collision>
+        <visual name="east_vis">
+          <geometry><box><size>0.016 3.666 0.402</size></box></geometry>
+          <material><ambient>0.45 0.45 0.45 1</ambient><diffuse>0.45 0.45 0.45 1</diffuse></material>
+        </visual>
+        
+        <visual name="aruco_1_vis">
+          <pose>-0.009 -0.733 0.039 0 0 0</pose>
+          <geometry><box><size>0.002 0.2 0.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse><emissive>1 1 1 1</emissive>
+            <pbr>
+              <metal>
+                <albedo_map>model://puzzlebot_description/materials/textures/4x4_1000-1.png</albedo_map>
+                <emissive_map>model://puzzlebot_description/materials/textures/4x4_1000-1.png</emissive_map>
+                <roughness>1.0</roughness><metalness>0.0</metalness>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+
+      <link name="west_wall_seg1">
+        <pose>-2.434 -1.6605 0.201 0 0 0</pose>
+        <collision name="ww1_col"><geometry><box><size>0.016 0.345 0.402</size></box></geometry></collision>
+        <visual name="ww1_vis"><geometry><box><size>0.016 0.345 0.402</size></box></geometry>
+        <material><ambient>0.45 0.45 0.45 1</ambient><diffuse>0.45 0.45 0.45 1</diffuse></material></visual>
+      </link>
+
+      <link name="west_door1_header">
+        <pose>-2.434 -1.308 0.329 0 0 0</pose>
+        <collision name="wd1_col"><geometry><box><size>0.016 0.360 0.146</size></box></geometry></collision>
+        <visual name="wd1_vis">
+          <geometry><box><size>0.016 0.360 0.146</size></box></geometry>
+          <material><ambient>0.45 0.45 0.45 1</ambient><diffuse>0.45 0.45 0.45 1</diffuse></material>
+        </visual>
+        
+        <visual name="logo1_vis"> 
+          <pose>0.009 0 0 0 0 0</pose>
+          <geometry>
+            <box><size>0.002 0.14 0.14</size></box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <emissive>1 1 1 1</emissive>
+            <pbr>
+              <metal>
+                <albedo_map>model://puzzlebot_description/materials/textures/client_logo_1.png</albedo_map>
+                <emissive_map>model://puzzlebot_description/materials/textures/client_logo_1.png</emissive_map>
+                <roughness>1.0</roughness>
+                <metalness>0.0</metalness>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+
+      <link name="west_wall_seg2">
+        <pose>-2.434 -1.053 0.201 0 0 0</pose>
+        <collision name="ww2_col"><geometry><box><size>0.016 0.150 0.402</size></box></geometry></collision>
+        <visual name="ww2_vis"><geometry><box><size>0.016 0.150 0.402</size></box></geometry>
+        <material><ambient>0.45 0.45 0.45 1</ambient><diffuse>0.45 0.45 0.45 1</diffuse></material></visual>
+      </link>
+
+      <link name="west_door2_header">
+        <pose>-2.434 -0.795 0.329 0 0 0</pose>
+        <collision name="wd2_col"><geometry><box><size>0.016 0.366 0.146</size></box></geometry></collision>
+        <visual name="wd2_vis"><geometry><box><size>0.016 0.366 0.146</size></box></geometry>
+        <material><ambient>0.45 0.45 0.45 1</ambient><diffuse>0.45 0.45 0.45 1</diffuse></material></visual>
+
+        <visual name="logo2_vis">
+          <pose>0.009 0 0 0 0 0</pose>
+          <geometry>
+            <box><size>0.002 0.14 0.14</size></box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <emissive>1 1 1 1</emissive>
+            <pbr>
+              <metal>
+                <albedo_map>model://puzzlebot_description/materials/textures/client_logo_2.png</albedo_map>
+                <emissive_map>model://puzzlebot_description/materials/textures/client_logo_2.png</emissive_map>
+                <roughness>1.0</roughness>
+                <metalness>0.0</metalness>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+
+      <link name="west_wall_seg3">
+        <pose>-2.434 -0.537 0.201 0 0 0</pose>
+        <collision name="ww3_col"><geometry><box><size>0.016 0.150 0.402</size></box></geometry></collision>
+        <visual name="ww3_vis"><geometry><box><size>0.016 0.150 0.402</size></box></geometry>
+        <material><ambient>0.45 0.45 0.45 1</ambient><diffuse>0.45 0.45 0.45 1</diffuse></material></visual>
+      </link>
+
+      <link name="west_door3_header">
+        <pose>-2.434 -0.282 0.329 0 0 0</pose>
+        <collision name="wd3_col"><geometry><box><size>0.016 0.360 0.146</size></box></geometry></collision>
+        <visual name="wd3_vis"><geometry><box><size>0.016 0.360 0.146</size></box></geometry>
+        <material><ambient>0.45 0.45 0.45 1</ambient><diffuse>0.45 0.45 0.45 1</diffuse></material></visual>
+
+        <visual name="logo3_vis">
+          <pose>0.009 0 0 0 0 0</pose>
+          <geometry>
+            <box><size>0.002 0.14 0.14</size></box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <emissive>1 1 1 1</emissive>
+            <pbr>
+              <metal>
+                <albedo_map>model://puzzlebot_description/materials/textures/client_logo_3.png</albedo_map>
+                <emissive_map>model://puzzlebot_description/materials/textures/client_logo_3.png</emissive_map>
+                <roughness>1.0</roughness>
+                <metalness>0.0</metalness>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+
+      <link name="west_wall_seg4">
+        <pose>-2.434 0.8655 0.201 0 0 0</pose>
+        <collision name="ww4_col"><geometry><box><size>0.016 1.935 0.402</size></box></geometry></collision>
+        <visual name="ww4_vis"><geometry><box><size>0.016 1.935 0.402</size></box></geometry>
+        <material><ambient>0.45 0.45 0.45 1</ambient><diffuse>0.45 0.45 0.45 1</diffuse></material></visual>
+        <visual name="sponsor_logo_vis">
+          <pose>0.009 0 0 0 0 0</pose>
+          <geometry>
+            <box><size>0.002 1.290 0.268</size></box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <emissive>1 1 1 1</emissive>
+            <pbr>
+              <metal>
+                <albedo_map>model://puzzlebot_description/materials/textures/sponsor_logos.png</albedo_map>
+                <emissive_map>model://puzzlebot_description/materials/textures/sponsor_logos.png</emissive_map>
+                <roughness>1.0</roughness>
+                <metalness>0.0</metalness>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+
+      <link name="d1_corr_l">
+        <pose>-2.7415 -1.496 0.201 0 0 0</pose>
+        <collision name="d1_cl_c"><geometry><box><size>0.615 0.016 0.402</size></box></geometry></collision>
+        <visual name="d1_cl_v"><geometry><box><size>0.615 0.016 0.402</size></box></geometry><material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material></visual>
+      </link>
+      <link name="d1_corr_r">
+        <pose>-2.7415 -1.120 0.201 0 0 0</pose>
+        <collision name="d1_cr_c"><geometry><box><size>0.615 0.016 0.402</size></box></geometry></collision>
+        <visual name="d1_cr_v"><geometry><box><size>0.615 0.016 0.402</size></box></geometry><material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material></visual>
+      </link>
+      <link name="d1_corr_b">
+        <pose>-3.057 -1.308 0.201 0 0 0</pose>
+        <collision name="d1_cb_c"><geometry><box><size>0.016 0.392 0.402</size></box></geometry></collision>
+        <visual name="d1_cb_v"><geometry><box><size>0.016 0.392 0.402</size></box></geometry><material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material></visual>
+      </link>
+
+      <link name="d2_corr_l">
+        <pose>-2.7415 -0.986 0.201 0 0 0</pose>
+        <collision name="d2_cl_c"><geometry><box><size>0.615 0.016 0.402</size></box></geometry></collision>
+        <visual name="d2_cl_v"><geometry><box><size>0.615 0.016 0.402</size></box></geometry><material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material></visual>
+      </link>
+      <link name="d2_corr_r">
+        <pose>-2.7415 -0.604 0.201 0 0 0</pose>
+        <collision name="d2_cr_c"><geometry><box><size>0.615 0.016 0.402</size></box></geometry></collision>
+        <visual name="d2_cr_v"><geometry><box><size>0.615 0.016 0.402</size></box></geometry><material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material></visual>
+      </link>
+      <link name="d2_corr_b">
+        <pose>-3.057 -0.795 0.201 0 0 0</pose>
+        <collision name="d2_cb_c"><geometry><box><size>0.016 0.398 0.402</size></box></geometry></collision>
+        <visual name="d2_cb_v"><geometry><box><size>0.016 0.398 0.402</size></box></geometry><material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material></visual>
+      </link>
+
+      <link name="d3_corr_l">
+        <pose>-2.7415 -0.470 0.201 0 0 0</pose>
+        <collision name="d3_cl_c"><geometry><box><size>0.615 0.016 0.402</size></box></geometry></collision>
+        <visual name="d3_cl_v"><geometry><box><size>0.615 0.016 0.402</size></box></geometry><material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material></visual>
+      </link>
+      <link name="d3_corr_r">
+        <pose>-2.7415 -0.094 0.201 0 0 0</pose>
+        <collision name="d3_cr_c"><geometry><box><size>0.615 0.016 0.402</size></box></geometry></collision>
+        <visual name="d3_cr_v"><geometry><box><size>0.615 0.016 0.402</size></box></geometry><material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material></visual>
+      </link>
+      <link name="d3_corr_b">
+        <pose>-3.057 -0.282 0.201 0 0 0</pose>
+        <collision name="d3_cb_c"><geometry><box><size>0.016 0.392 0.402</size></box></geometry></collision>
+        <visual name="d3_cb_v"><geometry><box><size>0.016 0.392 0.402</size></box></geometry><material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="rack_north_1"><static>true</static><pose>0.781 1.833 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+    
+    <model name="rack_north_2"><static>true</static><pose>0.366 1.833 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_south_1"><static>true</static><pose>0.781 -1.722 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_south_2"><static>true</static><pose>0.366 -1.722 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_south_3"><static>true</static><pose>-0.049 -1.722 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_s1_p1_1"><static>true</static><pose>1.151 0.723 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+    <model name="rack_s1_p1_2"><static>true</static><pose>1.151 0.612 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_s1_p2_1"><static>true</static><pose>0.801 0.723 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+    <model name="rack_s1_p2_2"><static>true</static><pose>0.801 0.612 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_s1_p3_1"><static>true</static><pose>0.451 0.723 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+    <model name="rack_s1_p3_2"><static>true</static><pose>0.451 0.612 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_s2_p1_1"><static>true</static><pose>1.151 -0.449 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+    <model name="rack_s2_p1_2"><static>true</static><pose>1.151 -0.560 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_s2_p2_1"><static>true</static><pose>0.801 -0.449 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+    <model name="rack_s2_p2_2"><static>true</static><pose>0.801 -0.560 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_s2_p3_1"><static>true</static><pose>0.451 -0.449 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+    <model name="rack_s2_p3_2"><static>true</static><pose>0.451 -0.560 0 0 0 0</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_s3_1"><static>true</static><pose>-0.885 -0.210 0 0 0 1.5708</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+    
+    <model name="rack_s3_3"><static>true</static><pose>-0.885 0.140 0 0 0 1.5708</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_s3_5"><static>true</static><pose>-0.885 0.490 0 0 0 1.5708</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_s3_2"><static>true</static><pose>-1.012 -0.210 0 0 0 1.5708</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_s3_4"><static>true</static><pose>-1.012 0.140 0 0 0 1.5708</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_s3_6"><static>true</static><pose>-1.012 0.490 0 0 0 1.5708</pose>
+      <link name="rack_link"><collision name="rack_col"><geometry><mesh><uri>model://puzzlebot_description/models/rack_collision.stl</uri></mesh></geometry></collision>
+      <visual name="rack_vis"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry><material><ambient>0.0 0.11 0.38 1</ambient><diffuse>0.0 0.11 0.38 1</diffuse><specular>0.2 0.2 0.2 1</specular></material></visual></link>
+    </model>
+
+    <model name="rack_middle_walls">
+      <static>true</static>
+      
+      <link name="set1_middle_wall">
+        <pose>0.626 0.612 0.1325 0 0 0</pose>
+        <collision name="s1_wall_col"><geometry><box><size>1.050 0.016 0.265</size></box></geometry></collision>
+        <visual name="s1_wall_vis"><geometry><box><size>1.050 0.016 0.265</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      </link>
+
+      <link name="set2_middle_wall">
+        <pose>0.626 -0.560 0.1325 0 0 0</pose>
+        <collision name="s2_wall_col"><geometry><box><size>1.050 0.016 0.265</size></box></geometry></collision>
+        <visual name="s2_wall_vis"><geometry><box><size>1.050 0.016 0.265</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      </link>
+
+      <link name="set3_middle_wall">
+        <pose>-0.893 -0.035 0.1325 0 0 0</pose>
+        <collision name="s3_wall_col"><geometry><box><size>0.016 1.050 0.265</size></box></geometry></collision>
+        <visual name="s3_wall_vis"><geometry><box><size>0.016 1.050 0.265</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="conveyor_1">
+      <static>true</static>
+      <pose>2.3765 0.9110 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_2">
+      <static>true</static>
+      <pose>2.2615 0.9110 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_3">
+      <static>true</static>
+      <pose>2.1465 0.9110 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_4">
+      <static>true</static>
+      <pose>2.3765 0.6460 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_5">
+      <static>true</static>
+      <pose>2.2615 0.6460 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_6">
+      <static>true</static>
+      <pose>2.1465 0.6460 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_7">
+      <static>true</static>
+      <pose>2.3765 0.0010 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_8">
+      <static>true</static>
+      <pose>2.2615 0.0010 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_9">
+      <static>true</static>
+      <pose>2.1465 0.0010 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_10">
+      <static>true</static>
+      <pose>2.3765 -0.4090 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_11">
+      <static>true</static>
+      <pose>2.2615 -0.4090 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_12">
+      <static>true</static>
+      <pose>2.1465 -0.4090 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_13">
+      <static>true</static>
+      <pose>2.3765 -0.8190 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_14">
+      <static>true</static>
+      <pose>2.2615 -0.8190 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_15">
+      <static>true</static>
+      <pose>2.1465 -0.8190 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_16">
+      <static>true</static>
+      <pose>2.3765 -1.2390 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_17">
+      <static>true</static>
+      <pose>2.2615 -1.2390 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_18">
+      <static>true</static>
+      <pose>2.1465 -1.2390 0.0500 0 0 1.57080</pose> 
+      <link name="conveyor_link">
+        
+        <collision name="conveyor_col">
+          <pose>0 0 0 0 0 0</pose> 
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/conveyor_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="conveyor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="rack_first_floor_pallet">
+      <pose>0.62 -0.625 0.021 0 0 3.14159</pose>
+      <link name="pallet_link">
+        
+        <inertial>
+          <mass>0.297551</mass>
+          <pose>0 0 0 0 0 0</pose>
+          <inertia>
+            <ixx>0.0002578295073</ixx>
+            <iyy>0.0003669229613</iyy>
+            <izz>0.0006049220946</izz>
+            <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz>
+          </inertia>
+        </inertial>
+
+        <collision name="pallet_bottom">
+          <pose>0 0 0.0025 0 0 0</pose>
+          <geometry><box><size>0.12 0.10 0.0031</size></box></geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1000000.0</kp>
+                <kd>100.0</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+            <friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction>
+          </surface>
+        </collision>
+
+        <collision name="pallet_leg_left">
+          <pose>-0.055 0 0.01215 0 0 0</pose>
+          <geometry><box><size>0.01 0.10 0.0143</size></box></geometry>
+          <surface><friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction></surface>
+        </collision>
+
+        <collision name="pallet_leg_center">
+          <pose>0 0 0.01215 0 0 0</pose>
+          <geometry><box><size>0.01 0.10 0.0143</size></box></geometry>
+          <surface><friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction></surface>
+        </collision>
+
+        <collision name="pallet_leg_right">
+          <pose>0.055 0 0.01215 0 0 0</pose>
+          <geometry><box><size>0.01 0.10 0.0143</size></box></geometry>
+          <surface><friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction></surface>
+        </collision>
+
+        <collision name="pallet_top">
+          <pose>0 0 0.0206 0 0 0</pose>
+          <geometry><box><size>0.12 0.10 0.0026</size></box></geometry>
+          <surface><friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction></surface>
+        </collision>
+        
+        <visual name="pallet_vis">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/pallet.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+        
+        <collision name="qr_cube_col">
+          <pose>0.0 0.0 0.075 0 0 0</pose>
+          <geometry><box><size>0.12 0.10 0.11</size></box></geometry>
+        </collision>
+
+        <visual name="qr_cube_vis">
+          <pose>0.0 0.0 0.075 0 0 0</pose>
+          <geometry><box><size>0.12 0.10 0.11</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <emissive>0 0 0 1</emissive>
+          </material>
+        </visual>
+
+        <visual name="qr_face_vis">
+          <pose>0.0 0.051 0.075 0 0 0</pose>
+          <geometry><box><size>0.12 0.002 0.11</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <emissive>1 1 1 1</emissive>
+            <pbr>
+              <metal>
+                <albedo_map>model://puzzlebot_description/materials/textures/qr_Popsi.png</albedo_map>
+                <emissive_map>model://puzzlebot_description/materials/textures/qr_Popsi.png</emissive_map>
+                <roughness>1.0</roughness>
+                <metalness>0.0</metalness>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+   <model name="rack_second_floor_pallet">
+      <pose>-0.96 0.0 0.22 0 0 1.5708</pose>
+      <link name="pallet_link">
+        
+        <inertial>
+          <mass>0.297551</mass>
+          <pose>0 0 0 0 0 0</pose>
+          <inertia>
+            <ixx>0.0002578295073</ixx>
+            <iyy>0.0003669229613</iyy>
+            <izz>0.0006049220946</izz>
+            <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz>
+          </inertia>
+        </inertial>
+
+        <collision name="pallet_bottom">
+          <pose>0 0 0.0025 0 0 0</pose>
+          <geometry><box><size>0.12 0.10 0.0031</size></box></geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1000000.0</kp>
+                <kd>100.0</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+            <friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction>
+          </surface>
+        </collision>
+
+        <collision name="pallet_leg_left">
+          <pose>-0.055 0 0.01215 0 0 0</pose>
+          <geometry><box><size>0.01 0.10 0.0143</size></box></geometry>
+          <surface><friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction></surface>
+        </collision>
+
+        <collision name="pallet_leg_center">
+          <pose>0 0 0.01215 0 0 0</pose>
+          <geometry><box><size>0.01 0.10 0.0143</size></box></geometry>
+          <surface><friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction></surface>
+        </collision>
+
+        <collision name="pallet_leg_right">
+          <pose>0.055 0 0.01215 0 0 0</pose>
+          <geometry><box><size>0.01 0.10 0.0143</size></box></geometry>
+          <surface><friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction></surface>
+        </collision>
+
+        <collision name="pallet_top">
+          <pose>0 0 0.0206 0 0 0</pose>
+          <geometry><box><size>0.12 0.10 0.0026</size></box></geometry>
+          <surface><friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction></surface>
+        </collision>
+        
+        <visual name="pallet_vis">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/pallet.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+        
+        <collision name="qr_cube_col">
+          <pose>0.0 0.0 0.075 0 0 0</pose> 
+          <geometry><box><size>0.12 0.10 0.11</size></box></geometry>
+        </collision>
+        
+        <visual name="qr_cube_vis">
+          <pose>0.0 0.0 0.075 0 0 0</pose>
+          <geometry><box><size>0.12 0.10 0.11</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <emissive>0 0 0 1</emissive>
+          </material>
+        </visual>
+
+        <visual name="qr_face_vis">
+          <pose>0.0 0.051 0.075 0 0 0</pose>
+          <geometry><box><size>0.12 0.002 0.11</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <emissive>1 1 1 1</emissive>
+            <pbr>
+              <metal>
+                <albedo_map>model://puzzlebot_description/materials/textures/qr_Emezon.png</albedo_map>
+                <emissive_map>model://puzzlebot_description/materials/textures/qr_Emezon.png</emissive_map>
+                <roughness>1.0</roughness>
+                <metalness>0.0</metalness>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_pallet">
+      <pose>2.1465 0.9110 0.1800 0 0 1.5708</pose>
+      <link name="pallet_link">
+        
+        <inertial>
+          <mass>0.297551</mass>
+          <pose>0 0 0 0 0 0</pose>
+          <inertia>
+            <ixx>0.0002578295073</ixx>
+            <iyy>0.0003669229613</iyy>
+            <izz>0.0006049220946</izz>
+            <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz>
+          </inertia>
+        </inertial>
+
+        <collision name="pallet_bottom">
+          <pose>0 0 0.0025 0 0 0</pose>
+          <geometry><box><size>0.12 0.10 0.0031</size></box></geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1000000.0</kp>
+                <kd>100.0</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+            <friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction>
+          </surface>
+        </collision>
+
+        <collision name="pallet_leg_left">
+          <pose>-0.055 0 0.01215 0 0 0</pose>
+          <geometry><box><size>0.01 0.10 0.0143</size></box></geometry>
+          <surface><friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction></surface>
+        </collision>
+
+        <collision name="pallet_leg_center">
+          <pose>0 0 0.01215 0 0 0</pose>
+          <geometry><box><size>0.01 0.10 0.0143</size></box></geometry>
+          <surface><friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction></surface>
+        </collision>
+
+        <collision name="pallet_leg_right">
+          <pose>0.055 0 0.01215 0 0 0</pose>
+          <geometry><box><size>0.01 0.10 0.0143</size></box></geometry>
+          <surface><friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction></surface>
+        </collision>
+
+        <collision name="pallet_top">
+          <pose>0 0 0.0206 0 0 0</pose>
+          <geometry><box><size>0.12 0.10 0.0026</size></box></geometry>
+          <surface><friction><ode><mu>100.0</mu><mu2>100.0</mu2></ode></friction></surface>
+        </collision>
+        
+        <visual name="pallet_vis">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://puzzlebot_description/models/pallet.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.0 0.11 0.38 1</ambient>
+            <diffuse>0.0 0.11 0.38 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+
+        <collision name="qr_cube_col">
+          <pose>0.0 0.0 0.075 0 0 0</pose>
+          <geometry><box><size>0.12 0.10 0.11</size></box></geometry>
+        </collision>
+
+        <visual name="cube_vis">
+          <pose>0.0 0.0 0.075 0 0 0</pose>
+          <geometry><box><size>0.12 0.10 0.11</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <emissive>0 0 0 1</emissive>
+          </material>
+        </visual>
+
+        <visual name="qr_face_vis">
+          <pose>0.0 0.051 0.075 0 0 0</pose>
+          <geometry><box><size>0.12 0.002 0.11</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <emissive>1 1 1 1</emissive>
+            <pbr>
+              <metal>
+                <albedo_map>model://puzzlebot_description/materials/textures/qr_Wolmar.png</albedo_map>
+                <emissive_map>model://puzzlebot_description/materials/textures/qr_Wolmar.png</emissive_map>
+                <roughness>1.0</roughness>
+                <metalness>0.0</metalness>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>

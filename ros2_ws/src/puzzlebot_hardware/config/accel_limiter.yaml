@@ -1,0 +1,6 @@
+accel_limiter:
+  ros__parameters:
+    update_rate: 60.0         # Hz
+    max_linear_accel: 0.3     # m/s^2
+    max_angular_accel: 1.0    # rad/s^2
+    input_timeout: 0.2        # s

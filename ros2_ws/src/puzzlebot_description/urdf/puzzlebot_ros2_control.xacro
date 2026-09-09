@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <ros2_control name="IgnitionSystem" type="system">
+        <hardware>
+            <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+        </hardware>
+
+        <joint name="wheel_left_joint">
+            <command_interface name="velocity"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+
+        <joint name="wheel_right_joint">
+            <command_interface name="velocity"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+
+        <joint name="forks_joint">
+            <command_interface name="velocity">
+                <param name="min">-0.5</param>
+                <param name="max">0.5</param>
+            </command_interface>
+            
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+        </joint>
+    </ros2_control> 
+    
+    <gazebo>
+        <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+            <parameters>$(find puzzlebot_control)/config/simulation_controller.yaml</parameters>
+            <ros>
+                <remapping>/diff_drive_controller/cmd_vel_unstamped:=/cmd_vel</remapping>
+                <remapping>/diff_drive_controller/odom:=/odom</remapping>
+            </ros>
+        </plugin>
+    </gazebo>
+
+</robot>

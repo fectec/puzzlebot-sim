@@ -1,0 +1,447 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="puzzlebot">
+
+    <xacro:include filename="$(find puzzlebot_description)/urdf/puzzlebot_gazebo.xacro"/>
+    <xacro:include filename="$(find puzzlebot_description)/urdf/puzzlebot_ros2_control.xacro"/>
+
+    <!-- BASE -->
+
+    <xacro:property name="base_link_m"              value="2.324448750"/>
+    <xacro:property name="base_link_ixx"            value="4.694465755e-03"/>
+    <xacro:property name="base_link_iyy"            value="7.220525388e-03"/>
+    <xacro:property name="base_link_izz"            value="9.151978366e-03"/>
+
+    <!-- WHEELS -->
+
+    <xacro:property name="wheel_link_m"             value="0.046310728"/>
+    <xacro:property name="wheel_link_ixx"           value="2.902337294e-05"/>
+    <xacro:property name="wheel_link_iyy"           value="5.785378438e-05"/>
+    <xacro:property name="wheel_link_izz"           value="2.902337244e-05"/>
+
+    <xacro:property name="wheel_rad"                value="0.05"/>
+
+    <xacro:property name="wheel_left_link_x"        value="0.050924"/>
+    <xacro:property name="wheel_left_link_y"        value="0.095420 "/>
+    <xacro:property name="wheel_left_link_z"        value="-0.000134"/>
+
+    <xacro:property name="wheel_right_link_x"       value="0.050924"/>
+    <xacro:property name="wheel_right_link_y"       value="-0.095420"/>
+    <xacro:property name="wheel_right_link_z"       value="-0.000134"/>
+
+    <!-- CASTER WHEEL -->
+
+    <xacro:property name="caster_link_m"            value="1.0e-05"/>
+    <xacro:property name="caster_link_i"            value="1.0e-09"/>
+
+    <xacro:property name="caster_rad"               value="0.0075"/>
+
+    <xacro:property name="caster_link_x"            value="-0.095"/>
+    <xacro:property name="caster_link_z"            value="-0.0425"/>
+
+    <!-- CAMERAS -->
+
+    <xacro:property name="camera_link_m"            value="0.002"/>
+    <xacro:property name="camera_link_i"            value="1.0e-08"/> 
+
+    <xacro:property name="camera_link_x"            value="0.115"/>
+    <xacro:property name="camera_link_y"            value="0.0"/>
+    <xacro:property name="camera_link_z"            value="0.084850"/>
+
+    <xacro:property name="debug_camera_link_x"      value="0.0"/>
+    <xacro:property name="debug_camera_link_y"      value="0.0"/>
+    <xacro:property name="debug_camera_link_z"      value="0.0"/>
+
+    <!-- LASER -->
+
+    <xacro:property name="laser_base_link_m"        value="0.101540906"/>
+
+    <xacro:property name="laser_base_link_ixx"      value="1.978229796e-04"/> 
+    <xacro:property name="laser_base_link_iyy"      value="1.020261812e-04"/> 
+    <xacro:property name="laser_base_link_izz"      value="2.994260745e-04"/> 
+
+    <xacro:property name="laser_base_link_x"        value="0.039060"/>
+    <xacro:property name="laser_base_link_y"        value="0.0"/>
+    <xacro:property name="laser_base_link_z"        value="0.067366"/>
+
+    <xacro:property name="laser_m"                  value="0.336014000"/>
+
+    <xacro:property name="laser_ixx"                value="1.799989861e-04"/> 
+    <xacro:property name="laser_iyy"                value="2.598702786e-04"/> 
+    <xacro:property name="laser_izz"                value="2.926836902e-04"/> 
+
+    <xacro:property name="laser_x"                  value="0.046489"/>
+    <xacro:property name="laser_y"                  value="0.0"/>
+    <xacro:property name="laser_z"                  value="0.111915"/>
+
+    <!-- ELEVATOR -->
+
+    <xacro:property name="elevator_link_m"          value="0.526998733"/>
+    <xacro:property name="elevator_link_ixx"        value="3.062077831e-03"/>
+    <xacro:property name="elevator_link_iyy"        value="2.762347734e-03"/>
+    <xacro:property name="elevator_link_izz"        value="3.348632789e-04"/>
+
+    <xacro:property name="elevator_link_x"          value="0.121052"/>
+    <xacro:property name="elevator_link_y"          value="-0.000004"/>
+    <xacro:property name="elevator_link_z"          value="0.078815"/>
+
+    <!-- FORKS -->
+
+    <xacro:property name="forks_link_m"             value="0.079855826"/>
+    <xacro:property name="forks_link_ixx"           value="3.318780453e-05"/>
+    <xacro:property name="forks_link_iyy"           value="6.633479010e-05"/>
+    <xacro:property name="forks_link_izz"           value="9.836248095e-05"/>
+
+    <xacro:property name="forks_global_x"           value="0.145811"/>
+    <xacro:property name="forks_tip_offset_x"       value="0.066"/>
+    <xacro:property name="forks_global_y"           value="-0.000015"/>
+    <xacro:property name="forks_global_z"           value="-0.042"/>
+
+    <xacro:property name="forks_limit_lower"        value="-0.001"/>
+    <xacro:property name="forks_limit_upper"        value="0.23825"/>
+    <xacro:property name="forks_limit_effort"       value="80.0"/>
+    <xacro:property name="forks_limit_velocity"     value="0.06"/>
+    <xacro:property name="forks_dynamics_damping"   value="15.0"/>
+    <xacro:property name="forks_dynamics_friction"  value="3.0"/>
+
+    <!-- HOLDERS -->
+
+    <xacro:property name="holder_link_m"            value="0.023470888"/>
+    <xacro:property name="holder_link_ixx"          value="2.627325727e-06"/> 
+    <xacro:property name="holder_link_iyy"          value="4.994928022e-06"/> 
+    <xacro:property name="holder_link_izz"          value="4.213295825e-06"/> 
+    
+    <xacro:property name="top_right_holder_link_x"  value="0.112130"/>
+    <xacro:property name="top_right_holder_link_y"  value="-0.045890"/>
+    <xacro:property name="top_right_holder_link_z"  value="0.039258"/>
+
+    <xacro:property name="top_left_holder_link_x"   value="0.112130"/>
+    <xacro:property name="top_left_holder_link_y"   value="0.045882"/>
+    <xacro:property name="top_left_holder_link_z"   value="0.039258"/>
+
+    <xacro:property name="bottom_right_holder_link_x"  value="0.112697"/>
+    <xacro:property name="bottom_right_holder_link_y"  value="-0.045992"/>
+    <xacro:property name="bottom_right_holder_link_z"  value="-0.015760"/>
+
+    <xacro:property name="bottom_left_holder_link_x"   value="0.112697"/>
+    <xacro:property name="bottom_left_holder_link_y"   value="0.045984"/>
+    <xacro:property name="bottom_left_holder_link_z"   value="-0.015760"/>
+
+    <!-- COLORS -->
+
+    <xacro:property name="transparent"              value="0.85 0.85 0.85 0.6"/> 
+    <xacro:property name="orange"                   value="1.0 0.45 0.0 1.0"/>  
+    <xacro:property name="dark_grey"                value="0.2 0.2 0.2 1.0"/>
+    <xacro:property name="lila"                     value="0.8 0.6 0.8 1.0"/>
+    <xacro:property name="green"                    value="0.13 0.54 0.13 1.0"/>
+
+    <!-- BASE -->
+
+    <link name="base_footprint">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1.0e-06"/>
+            <inertia ixx="1.0e-09" ixy="0.0" ixz="0.0" iyy="1.0e-09" iyz="0.0" izz="1.0e-09"/>
+        </inertial>
+    </link>
+
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${base_link_m}"/>
+            <inertia ixx="${base_link_ixx}" ixy="0.0" ixz="0.0" iyy="${base_link_iyy}" iyz="0.0" izz="${base_link_izz}"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/chassis.stl"/></geometry>
+            <material name="chassis_color"><color rgba="${transparent}"/></material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/chassis.stl"/></geometry>
+        </collision>
+    </link>
+    
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
+    </joint>
+
+    <!-- WHEELS -->
+
+    <link name="wheel_right_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${wheel_link_m}"/>
+            <inertia ixx="${wheel_link_ixx}" ixy="0.0" ixz="0.0" iyy="${wheel_link_iyy}" iyz="0.0" izz="${wheel_link_izz}"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/wheel_right.stl"/></geometry>
+            <material name="wheel_color"><color rgba="${orange}"/></material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry><sphere radius="${wheel_rad}"/></geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_right_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_right_link"/>
+        <axis xyz="0 1 0"/>
+        <origin xyz="${wheel_right_link_x} ${wheel_right_link_y} ${wheel_right_link_z}" rpy="0 0 0"/>
+    </joint>
+
+    <link name="wheel_left_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${wheel_link_m}"/>
+            <inertia ixx="${wheel_link_ixx}" ixy="0.0" ixz="0.0" iyy="${wheel_link_iyy}" iyz="0.0" izz="${wheel_link_izz}"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/wheel_left.stl"/></geometry>
+            <material name="wheel_color"><color rgba="${orange}"/></material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry><sphere radius="${wheel_rad}"/></geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_left_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_left_link"/>
+        <axis xyz="0 1 0"/>
+        <origin xyz="${wheel_left_link_x} ${wheel_left_link_y} ${wheel_left_link_z}" rpy="0 0 0"/>
+    </joint>
+
+    <!-- CASTER WHEEL -->
+
+    <link name="caster_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${caster_link_m}"/>
+            <inertia ixx="${caster_link_i}" ixy="0.0" ixz="0.0" iyy="${caster_link_i}" iyz="0.0" izz="${caster_link_i}"/>
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><sphere radius="${caster_rad}"/></geometry>
+        </collision>
+    </link>
+
+    <joint name="caster_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="caster_link"/>
+        <origin xyz="${caster_link_x} 0 ${caster_link_z}" rpy="0 0 0"/>
+    </joint>
+
+    <!-- CAMERAS -->
+
+    <link name="camera_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${camera_link_m}"/>
+            <inertia ixx="${camera_link_i}" ixy="0.0" ixz="0.0" iyy="${camera_link_i}" iyz="0.0" izz="${camera_link_i}"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/camera.stl"/></geometry>
+            <material name="camera_color"><color rgba="${green}"/></material>
+        </visual>
+    </link>
+
+    <joint name="camera_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="camera_link"/>
+        <origin xyz="${camera_link_x} ${camera_link_y} ${camera_link_z}" rpy="0 0 0"/> 
+    </joint>
+
+    <link name="camera_optical_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1.0e-06"/>
+            <inertia ixx="1.0e-09" ixy="0.0" ixz="0.0" iyy="1.0e-09" iyz="0.0" izz="1.0e-09"/>
+        </inertial>
+    </link>
+
+    <joint name="camera_optical_joint" type="fixed">
+        <parent link="camera_link"/>
+        <child link="camera_optical_link"/>
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+
+    <link name="debug_camera_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${camera_link_m}"/>
+            <inertia ixx="${camera_link_i}" ixy="0.0" ixz="0.0" iyy="${camera_link_i}" iyz="0.0" izz="${camera_link_i}"/>
+        </inertial>
+    </link>
+
+    <joint name="debug_camera_joint" type="fixed">
+        <parent link="forks_link"/>
+        <child link="debug_camera_link"/>
+        <origin xyz="${debug_camera_link_x} ${debug_camera_link_y} ${debug_camera_link_z}" rpy="0 0 0"/>
+    </joint>
+
+    <link name="debug_camera_optical_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1.0e-06"/>
+            <inertia ixx="1.0e-09" ixy="0.0" ixz="0.0" iyy="1.0e-09" iyz="0.0" izz="1.0e-09"/>
+        </inertial>
+    </link>
+
+    <joint name="debug_camera_optical_joint" type="fixed">
+        <parent link="debug_camera_link"/>
+        <child link="debug_camera_optical_link"/>
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+
+    <!-- LASER -->
+
+    <link name="laser_base_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${laser_base_link_m}"/>
+            <inertia ixx="${laser_base_link_ixx}" ixy="0.0" ixz="0.0" iyy="${laser_base_link_iyy}" iyz="0.0" izz="${laser_base_link_izz}"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/laser_base.stl"/></geometry>
+            <material name="laser_base_color"><color rgba="${transparent}"/></material>
+        </visual>
+    </link>
+
+    <joint name="laser_base_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="laser_base_link"/>
+        <origin xyz="${laser_base_link_x} ${laser_base_link_y} ${laser_base_link_z}" rpy="0 0 0"/>
+    </joint>
+
+    <link name="laser">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${laser_m}"/>
+            <inertia ixx="${laser_ixx}" ixy="0.0" ixz="0.0" iyy="${laser_iyy}" iyz="0.0" izz="${laser_izz}"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/laser_link.stl"/></geometry>
+            <material name="laser_color"><color rgba="${dark_grey}"/></material>
+        </visual>
+    </link>
+
+    <joint name="laser_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="laser" />
+        <origin xyz="${laser_x} ${laser_y} ${laser_z}" rpy="0 0 ${pi}" />
+    </joint>
+
+    <!-- ELEVATOR -->
+
+    <link name="elevator_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${elevator_link_m}"/>
+            <inertia ixx="${elevator_link_ixx}" ixy="0.0" ixz="0.0" iyy="${elevator_link_iyy}" iyz="0.0" izz="${elevator_link_izz}"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/elevator.stl"/></geometry>
+            <material name="elevator_material"><color rgba="${dark_grey}"/></material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/elevator.stl"/></geometry>
+        </collision>
+    </link>
+
+    <joint name="elevator_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="elevator_link"/>
+        <origin xyz="${elevator_link_x} ${elevator_link_y} ${elevator_link_z}" rpy="0 0 0"/> 
+    </joint>
+
+    <!-- FORKS -->
+
+    <link name="forks_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${forks_link_m}"/>
+            <inertia ixx="${forks_link_ixx}" ixy="0.0" ixz="0.0" iyy="${forks_link_iyy}" iyz="0.0" izz="${forks_link_izz}"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/forklift_train.stl"/></geometry>
+            <material name="forks_material"><color rgba="${dark_grey}"/></material>
+        </visual>
+        
+        <collision name="forks_base">
+            <origin xyz="-0.0247 0.0 0.0016" rpy="0 0 0"/>
+            <geometry><box size="0.020 0.070 0.010"/></geometry>
+        </collision>
+        
+        <collision name="fork_left">
+            <origin xyz="0.0253 0.0250 0.0006" rpy="0 0 0"/>
+            <geometry><box size="0.080 0.020 0.008"/></geometry>
+        </collision>
+        
+        <collision name="fork_right">
+            <origin xyz="0.0253 -0.0250 0.0006" rpy="0 0 0"/>
+            <geometry><box size="0.080 0.020 0.008"/></geometry>
+        </collision>
+    </link>
+
+    <joint name="forks_joint" type="prismatic">
+        <parent link="elevator_link"/>
+        <child link="forks_link"/>
+        <axis xyz="0 0 1"/> 
+        <limit lower="${forks_limit_lower}" upper="${forks_limit_upper}" effort="${forks_limit_effort}" velocity="${forks_limit_velocity}"/>
+        <dynamics damping="${forks_dynamics_damping}" friction="${forks_dynamics_friction}"/> 
+        <origin xyz="${forks_global_x - elevator_link_x} ${forks_global_y - elevator_link_y} ${forks_global_z - elevator_link_z}" rpy="0 0 0"/>
+    </joint>
+
+    <link name="forks_tip_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1.0e-06"/>
+            <inertia ixx="1.0e-09" ixy="0.0" ixz="0.0" iyy="1.0e-09" iyz="0.0" izz="1.0e-09"/>
+        </inertial>
+    </link>
+
+    <joint name="forks_tip_joint" type="fixed">
+        <parent link="forks_link"/>
+        <child link="forks_tip_link"/>
+        <origin xyz="${forks_tip_offset_x} 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <!-- HOLDERS -->
+
+    <link name="top_right_holder_link">
+        <inertial><mass value="${holder_link_m}"/><inertia ixx="${holder_link_ixx}" ixy="0.0" ixz="0.0" iyy="${holder_link_iyy}" iyz="0.0" izz="${holder_link_izz}"/></inertial>
+        <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://puzzlebot_description/meshes/top_right_holder.stl"/></geometry><material name="holder_col"><color rgba="${lila}"/></material></visual>
+    </link>
+    <joint name="top_right_holder_joint" type="fixed"><parent link="base_link"/><child link="top_right_holder_link"/><origin xyz="${top_right_holder_link_x} ${top_right_holder_link_y} ${top_right_holder_link_z}" rpy="0 0 0"/></joint>
+
+    <link name="top_left_holder_link">
+        <inertial><mass value="${holder_link_m}"/><inertia ixx="${holder_link_ixx}" ixy="0.0" ixz="0.0" iyy="${holder_link_iyy}" iyz="0.0" izz="${holder_link_izz}"/></inertial>
+        <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://puzzlebot_description/meshes/top_left_holder.stl"/></geometry><material name="holder_col"><color rgba="${lila}"/></material></visual>
+    </link>
+    <joint name="top_left_holder_joint" type="fixed"><parent link="base_link"/><child link="top_left_holder_link"/><origin xyz="${top_left_holder_link_x} ${top_left_holder_link_y} ${top_left_holder_link_z}" rpy="0 0 0"/></joint>
+
+    <link name="bottom_right_holder_link">
+        <inertial><mass value="${holder_link_m}"/><inertia ixx="${holder_link_ixx}" ixy="0.0" ixz="0.0" iyy="${holder_link_iyy}" iyz="0.0" izz="${holder_link_izz}"/></inertial>
+        <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://puzzlebot_description/meshes/bottom_right_holder.stl"/></geometry><material name="holder_col"><color rgba="${lila}"/></material></visual>
+    </link>
+    <joint name="bottom_right_holder_joint" type="fixed"><parent link="base_link"/><child link="bottom_right_holder_link"/><origin xyz="${bottom_right_holder_link_x} ${bottom_right_holder_link_y} ${bottom_right_holder_link_z}" rpy="0 0 0"/></joint>
+
+    <link name="bottom_left_holder_link">
+        <inertial><mass value="${holder_link_m}"/><inertia ixx="${holder_link_ixx}" ixy="0.0" ixz="0.0" iyy="${holder_link_iyy}" iyz="0.0" izz="${holder_link_izz}"/></inertial>
+        <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://puzzlebot_description/meshes/bottom_left_holder.stl"/></geometry><material name="holder_col"><color rgba="${lila}"/></material></visual>
+    </link>
+    <joint name="bottom_left_holder_joint" type="fixed"><parent link="base_link"/><child link="bottom_left_holder_link"/><origin xyz="${bottom_left_holder_link_x} ${bottom_left_holder_link_y} ${bottom_left_holder_link_z}" rpy="0 0 0"/></joint>
+
+</robot>

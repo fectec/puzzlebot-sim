@@ -1,0 +1,8 @@
+foxglove_bridge:
+  ros__parameters:
+    port: 8765
+    address: "0.0.0.0"
+    use_compression: false
+    max_qos_depth: 3
+    num_threads: 4 
+    send_buffer_limit: 20000000

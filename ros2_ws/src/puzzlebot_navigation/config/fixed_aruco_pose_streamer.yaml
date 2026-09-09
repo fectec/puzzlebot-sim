@@ -1,0 +1,4 @@
+fixed_aruco_pose_streamer:
+  ros__parameters:
+    update_rate: 1.0                          # Hz
+    aruco_file: 'fixed_arucos_poses.json'     # string

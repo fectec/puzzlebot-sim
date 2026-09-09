@@ -1,0 +1,910 @@
+{
+  "configById": {
+    "Gauge!49rytdg": {
+      "path": "/odom.twist.twist.linear.x",
+      "style": "dial",
+      "minValue": -0.15,
+      "maxValue": 0.15,
+      "tickInterval": 0.05,
+      "showTicks": true,
+      "colorMap": "red-yellow-green",
+      "colorMode": "gradient",
+      "gradient": [
+        "#0000ff",
+        "#ff00ff"
+      ],
+      "reverse": false,
+      "reverseDirection": false,
+      "origin": 0,
+      "mirrorColorAtOrigin": true,
+      "foxglovePanelTitle": "Puzzlebot Linear X"
+    },
+    "Plot!1ador9s": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/odom.twist.twist.linear.x",
+          "enabled": true,
+          "color": "#4f4f4f",
+          "id": "25a1f1d6-bf5d-4984-958d-5d0e330c0535",
+          "label": "Linear X",
+          "showLine": false
+        }
+      ],
+      "yAxisLabel": "m/s",
+      "foxglovePanelTitle": "Puzzlebot Linear X",
+      "minYValue": -0.15,
+      "maxYValue": 0.15
+    },
+    "Gauge!43vkfor": {
+      "path": "/odom.twist.twist.angular.z",
+      "style": "dial",
+      "minValue": -0.3,
+      "maxValue": 0.3,
+      "tickInterval": 0.1,
+      "showTicks": true,
+      "colorMap": "red-yellow-green",
+      "colorMode": "gradient",
+      "gradient": [
+        "#0000ff",
+        "#ff00ff"
+      ],
+      "reverse": false,
+      "reverseDirection": false,
+      "foxglovePanelTitle": "Puzzlebot Angular Z",
+      "origin": 0,
+      "mirrorColorAtOrigin": true
+    },
+    "Plot!xb9sgi": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/odom.twist.twist.angular.z",
+          "enabled": true,
+          "color": "#4f4f4f",
+          "id": "2c47f3e1-b7a9-449d-8479-1bdde82a674c",
+          "showLine": false,
+          "label": "Angular Z"
+        }
+      ],
+      "yAxisLabel": "rad/s",
+      "showLegend": true,
+      "foxglovePanelTitle": "Puzzlebot Angular Z",
+      "minYValue": -0.3,
+      "maxYValue": 0.3
+    },
+    "Gauge!243qlsv": {
+      "path": "/joint_states.position[2]",
+      "style": "bar",
+      "minValue": 0.0041,
+      "maxValue": 0.23409,
+      "tickInterval": 0.1,
+      "showTicks": false,
+      "colorMap": "red-yellow-green",
+      "colorMode": "gradient",
+      "gradient": [
+        "#0000ff",
+        "#ff00ff"
+      ],
+      "reverse": false,
+      "reverseDirection": false,
+      "foxglovePanelTitle": "Forklift"
+    },
+    "Image!1ksx6a0": {
+      "cameraState": {
+        "distance": 20,
+        "perspective": true,
+        "phi": 60,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOffset": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "thetaOffset": 60,
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "scene": {},
+      "transforms": {},
+      "topics": {},
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "synchronize": false,
+      "imageMode": {
+        "imageTopic": "/image_raw/compressed"
+      },
+      "foxglovePanelTitle": "Raw Image"
+    },
+    "Image!3f67zo8": {
+      "cameraState": {
+        "distance": 20,
+        "perspective": true,
+        "phi": 60,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOffset": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "thetaOffset": 60,
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "scene": {},
+      "transforms": {},
+      "topics": {},
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "synchronize": false,
+      "imageMode": {
+        "imageTopic": "/debug/image_raw/compressed"
+      },
+      "foxglovePanelTitle": "Debug Camera (Forks-Eye View)"
+    },
+    "Teleop!3myki9y": {
+      "topic": "/foxglove/cmd_vel",
+      "publishRate": 60,
+      "autoSendStopOnRelease": false,
+      "upButton": {
+        "field": "linear-x",
+        "value": 0.15
+      },
+      "downButton": {
+        "field": "linear-x",
+        "value": -0.15
+      },
+      "leftButton": {
+        "field": "angular-z",
+        "value": 0.3
+      },
+      "rightButton": {
+        "field": "angular-z",
+        "value": -0.3
+      },
+      "stopButton": {
+        "field": "linear-x",
+        "value": 0
+      },
+      "foxglovePanelTitle": "Puzzlebot"
+    },
+    "Teleop!vfuzdu": {
+      "topic": "/forklift_controller/foxglove/target",
+      "publishRate": 60,
+      "autoSendStopOnRelease": true,
+      "upButton": {
+        "field": "linear-z",
+        "value": 1
+      },
+      "downButton": {
+        "field": "linear-z",
+        "value": -1
+      },
+      "leftButton": {
+        "field": "linear-z",
+        "value": 0
+      },
+      "rightButton": {
+        "field": "linear-z",
+        "value": 0
+      },
+      "stopButton": {
+        "field": "linear-z",
+        "value": 0
+      },
+      "foxglovePanelTitle": "Forks"
+    },
+    "Publish!2fcu0p6": {
+      "topicName": "/lock",
+      "datatype": "std_msgs/msg/Bool",
+      "value": "{\n  \"data\": true\n}",
+      "buttonText": "Lock",
+      "buttonColor": "#ff0000",
+      "advancedView": false,
+      "foxglovePanelTitle": "Puzzlebot"
+    },
+    "Publish!14l75vj": {
+      "foxglovePanelTitle": "Puzzlebot",
+      "topicName": "/lock",
+      "datatype": "std_msgs/msg/Bool",
+      "value": "{\n  \"data\": false\n}",
+      "buttonText": "Unlock",
+      "buttonColor": "#007bff",
+      "advancedView": false
+    },
+    "Publish!1rzufwz": {
+      "foxglovePanelTitle": "Forks",
+      "topicName": "/forklift_controller/lock",
+      "datatype": "std_msgs/msg/Bool",
+      "value": "{\n  \"data\": true\n}",
+      "buttonText": "Lock",
+      "buttonColor": "#ff0000",
+      "advancedView": false
+    },
+    "Publish!4kltl8p": {
+      "topicName": "/forklift_controller/lock",
+      "datatype": "std_msgs/msg/Bool",
+      "value": "{\n  \"data\": false\n}",
+      "foxglovePanelTitle": "Forks",
+      "buttonText": "Unlock",
+      "buttonColor": "#007bff",
+      "buttonTooltip": "",
+      "advancedView": false
+    },
+    "Indicator!arqbee": {
+      "path": "/forklift_controller/status.data",
+      "style": "background",
+      "fontSize": 16,
+      "fallbackColor": "#ff0000",
+      "fallbackLabel": "NO DATA",
+      "rules": [
+        {
+          "operator": "=",
+          "rawValue": "REACHED",
+          "color": "#2196f3",
+          "label": "REACHED"
+        },
+        {
+          "operator": "=",
+          "rawValue": "IDLE",
+          "color": "#b0bec5",
+          "label": "IDLE"
+        },
+        {
+          "operator": "=",
+          "rawValue": "DISABLED",
+          "color": "#9e9e9e",
+          "label": "DISABLED"
+        },
+        {
+          "operator": "=",
+          "rawValue": "LOCKED",
+          "color": "#f44336",
+          "label": "LOCKED"
+        },
+        {
+          "operator": "=",
+          "rawValue": "RUNNING_JOYSTICK",
+          "color": "#4caf50",
+          "label": "RUNNING_JOYSTICK"
+        },
+        {
+          "operator": "=",
+          "rawValue": "RUNNING_FOXGLOVE_TWIST",
+          "color": "#b783ec",
+          "label": "RUNNING_FOXGLOVE_TWIST"
+        },
+        {
+          "operator": "=",
+          "rawValue": "RUNNING_TEMPLATE",
+          "color": "#ffd400",
+          "label": "RUNNING_TEMPLATE"
+        }
+      ],
+      "foxglovePanelTitle": "Forklift Status"
+    },
+    "Stack!25377ls": {
+      "panels": [
+        {
+          "panelId": "Gauge!49rytdg",
+          "size": 0.21349869236166588
+        },
+        {
+          "panelId": "Plot!1ador9s",
+          "size": 0.23078878545350845
+        },
+        {
+          "panelId": "Gauge!43vkfor",
+          "size": 0.22022261745293806
+        },
+        {
+          "panelId": "Plot!xb9sgi",
+          "size": 0.2355915890901312
+        },
+        {
+          "panelId": "Gauge!243qlsv",
+          "size": 0.011780939623505212
+        }
+      ],
+      "foxglovePanelTitle": "Motion Status"
+    },
+    "Stack!3l9u3k7": {
+      "panels": [
+        {
+          "panelId": "Image!1ksx6a0",
+          "size": 0.4760169490787109
+        },
+        {
+          "panelId": "Image!3f67zo8",
+          "size": 0.5196046408703089
+        }
+      ],
+      "foxglovePanelTitle": "Computer Vision"
+    },
+    "Stack!4kq2shp": {
+      "panels": [
+        {
+          "panelId": "Teleop!3myki9y",
+          "size": 0.25480280363662283
+        },
+        {
+          "panelId": "Teleop!vfuzdu",
+          "size": 0.2596056072732456
+        },
+        {
+          "panelId": "Publish!2fcu0p6",
+          "size": 0.05692729380776028
+        },
+        {
+          "panelId": "Publish!14l75vj",
+          "size": 0.03291327562464587
+        },
+        {
+          "panelId": "Publish!1rzufwz",
+          "size": 0.019465425442101846
+        },
+        {
+          "panelId": "Publish!4kltl8p",
+          "size": 0.03099215416999678
+        },
+        {
+          "panelId": "Indicator!arqbee",
+          "size": 0.01
+        }
+      ],
+      "foxglovePanelTitle": "Control Panel"
+    },
+    "3D!3p5cy77": {
+      "cameraState": {
+        "perspective": true,
+        "distance": 1.890748229173801,
+        "phi": 60.00000000000614,
+        "thetaOffset": 60.0000000000087,
+        "targetOffset": [
+          0,
+          0,
+          -7.509552278251444e-17
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000
+      },
+      "followMode": "follow-heading",
+      "followTf": "base_footprint",
+      "fixedFrame": "map",
+      "scene": {
+        "transforms": {
+          "visible": true,
+          "axisSize": 0.1,
+          "lineWidth": 2,
+          "lineColor": "#d98600",
+          "labelSize": 0.25,
+          "enablePreloading": true,
+          "offsetReferenceFrame": "parent"
+        },
+        "meshUpAxis": "z_up",
+        "enableStats": false,
+        "labelScaleFactor": 0.25,
+        "syncCamera": true,
+        "backgroundColor": "#ffffff",
+        "ignoreColladaUpAxis": true
+      },
+      "transforms": {
+        "frame:map": {
+          "visible": true
+        },
+        "frame:aruco_0_fixed": {
+          "visible": true
+        },
+        "frame:aruco_1_fixed": {
+          "visible": true
+        },
+        "frame:aruco_2_fixed": {
+          "visible": true
+        },
+        "frame:aruco_3_fixed": {
+          "visible": true
+        },
+        "frame:aruco_4_fixed": {
+          "visible": true
+        },
+        "frame:odom": {
+          "visible": true
+        },
+        "frame:base_footprint": {
+          "visible": true
+        },
+        "frame:base_link": {
+          "visible": false
+        },
+        "frame:bottom_left_holder_link": {
+          "visible": false
+        },
+        "frame:bottom_right_holder_link": {
+          "visible": false
+        },
+        "frame:camera_link": {
+          "visible": false
+        },
+        "frame:camera_optical_link": {
+          "visible": false
+        },
+        "frame:aruco_0_vision": {
+          "visible": false
+        },
+        "frame:aruco_1_vision": {
+          "visible": false
+        },
+        "frame:aruco_2_vision": {
+          "visible": false
+        },
+        "frame:aruco_3_vision": {
+          "visible": false
+        },
+        "frame:caster_link": {
+          "visible": false
+        },
+        "frame:elevator_link": {
+          "visible": false
+        },
+        "frame:forks_link": {
+          "visible": false
+        },
+        "frame:debug_camera_link": {
+          "visible": false
+        },
+        "frame:debug_camera_optical_link": {
+          "visible": false
+        },
+        "frame:forks_tip_link": {
+          "visible": false
+        },
+        "frame:laser": {
+          "visible": false
+        },
+        "frame:laser_base_link": {
+          "visible": false
+        },
+        "frame:top_left_holder_link": {
+          "visible": false
+        },
+        "frame:top_right_holder_link": {
+          "visible": false
+        },
+        "frame:wheel_left_link": {
+          "visible": false
+        },
+        "frame:wheel_right_link": {
+          "visible": false
+        },
+        "frame:pallet_qr_link": {
+          "visible": false
+        },
+        "frame:aruco_4_vision": {
+          "visible": false
+        }
+      },
+      "topics": {
+        "/robot_description": {
+          "visible": true
+        },
+        "/costmap/costmap": {
+          "visible": true,
+          "colorMode": "costmap",
+          "drawBehind": false,
+          "alpha": 1,
+          "frameLocked": false
+        },
+        "/pure_pursuit_controller/carrot": {
+          "visible": true,
+          "type": "arrow",
+          "arrowScale": [
+            0.3,
+            0.03,
+            0.03
+          ],
+          "color": "#6600ffff"
+        },
+        "/scan": {
+          "visible": true,
+          "colorField": "intensity",
+          "colorMode": "flat",
+          "colorMap": "turbo",
+          "pointSize": 7,
+          "flatColor": "#2900ffff"
+        },
+        "/map": {
+          "visible": true,
+          "colorMode": "map",
+          "drawBehind": true,
+          "alpha": 1
+        },
+        "/initialpose": {
+          "visible": false
+        },
+        "/finite_state_machine/route_markers": {
+          "visible": true,
+          "showOutlines": true,
+          "color": "#3335f2ff"
+        },
+        "/costmap/published_footprint": {
+          "visible": true,
+          "lineWidth": 0.01,
+          "color": "#6b7cffff"
+        },
+        "/camera_info": {
+          "visible": false,
+          "distance": 0.4,
+          "planarProjectionFactor": 0,
+          "width": 0.005,
+          "color": "#00000063"
+        },
+        "/banned_zone_filter/filtered_map": {
+          "visible": false
+        },
+        "/aruco_detector/debug_image/compressed": {
+          "cameraInfoTopic": "/camera_info",
+          "visible": false,
+          "projectionFrameId": "odom"
+        },
+        "/image_raw/compressed": {
+          "visible": true,
+          "cameraInfoTopic": "/camera_info",
+          "projectionFrameId": "odom",
+          "renderMode": "default",
+          "distance": 0.4,
+          "planarProjectionFactor": 0
+        },
+        "/perception_dashboard/annotated_image/compressed": {
+          "cameraInfoTopic": "/camera_info",
+          "visible": false,
+          "projectionFrameId": "odom"
+        },
+        "/aruco_detector/poses": {
+          "visible": true,
+          "type": "axis",
+          "axisScale": 0.1
+        },
+        "/amcl_pose": {
+          "visible": false
+        },
+        "/a_star_planner/visited_map": {
+          "visible": true,
+          "drawBehind": true,
+          "colorMode": "custom",
+          "alpha": 1,
+          "unknownColor": "#ffffffff",
+          "invalidColor": "#00cbffff"
+        },
+        "/a_star_planner/smoothed_path": {
+          "visible": true,
+          "type": "line",
+          "lineWidth": 0.06,
+          "gradient": [
+            "#7c6bffff",
+            "#7c6bff80"
+          ]
+        },
+        "/a_star_planner/path": {
+          "visible": false
+        },
+        "/debug/image_raw": {
+          "visible": false,
+          "cameraInfoTopic": "/camera_info",
+          "projectionFrameId": "odom"
+        },
+        "/goal_pose": {
+          "visible": false
+        },
+        "/move_base_simple/goal": {
+          "visible": false
+        },
+        "/object_detection_yolo/debug_image/compressed": {
+          "visible": false
+        },
+        "/qr_pose_calculator/pose": {
+          "visible": true,
+          "axisScale": 0.1
+        },
+        "/qr_reader/debug_image/compressed": {
+          "visible": false
+        },
+        "/robot_pose_publisher/pose": {
+          "visible": false
+        }
+      },
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "synchronize": false,
+      "imageMode": {},
+      "foxglovePanelTitle": "RoboArena 4.0"
+    },
+    "3D!38obisi": {
+      "cameraState": {
+        "distance": 4.947368421052489,
+        "perspective": false,
+        "phi": 60.0000000000001,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOffset": [
+          -0.10592218784754721,
+          0.010583426764961245,
+          -8.824842562357405e-34
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "thetaOffset": 180,
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000,
+        "logDepth": true
+      },
+      "followMode": "follow-heading",
+      "followTf": "map",
+      "fixedFrame": "map",
+      "scene": {
+        "enableStats": false,
+        "ignoreColladaUpAxis": true,
+        "meshUpAxis": "z_up",
+        "syncCamera": false,
+        "transforms": {
+          "visible": true,
+          "labelSize": 0.25,
+          "axisSize": 0.25,
+          "lineColor": "#d98600",
+          "showLabel": false,
+          "lineWidth": 1
+        },
+        "labelScaleFactor": 0.8
+      },
+      "transforms": {
+        "frame:map": {
+          "visible": true
+        },
+        "frame:aruco_0_fixed": {
+          "visible": true
+        },
+        "frame:base_link": {
+          "visible": false
+        },
+        "frame:bottom_left_holder_link": {
+          "visible": false
+        },
+        "frame:bottom_right_holder_link": {
+          "visible": false
+        },
+        "frame:camera_link": {
+          "visible": false
+        },
+        "frame:camera_optical_link": {
+          "visible": false
+        },
+        "frame:aruco_3_vision": {
+          "visible": false
+        },
+        "frame:caster_link": {
+          "visible": false
+        },
+        "frame:elevator_link": {
+          "visible": false
+        },
+        "frame:forks_link": {
+          "visible": false
+        },
+        "frame:debug_camera_link": {
+          "visible": false
+        },
+        "frame:debug_camera_optical_link": {
+          "visible": false
+        },
+        "frame:forks_tip_link": {
+          "visible": false
+        },
+        "frame:laser": {
+          "visible": false
+        },
+        "frame:laser_base_link": {
+          "visible": false
+        },
+        "frame:top_left_holder_link": {
+          "visible": false
+        },
+        "frame:top_right_holder_link": {
+          "visible": false
+        },
+        "frame:wheel_left_link": {
+          "visible": false
+        },
+        "frame:wheel_right_link": {
+          "visible": false
+        },
+        "frame:pallet_qr_link": {
+          "visible": false
+        },
+        "frame:aruco_1_vision": {
+          "visible": false
+        },
+        "frame:aruco_2_vision": {
+          "visible": false
+        },
+        "frame:aruco_0_vision": {
+          "visible": false
+        },
+        "frame:aruco_4_vision": {
+          "visible": false
+        }
+      },
+      "topics": {
+        "/costmap/costmap": {
+          "visible": true,
+          "colorMode": "costmap"
+        },
+        "/robot_description": {
+          "visible": true
+        },
+        "/scan": {
+          "visible": true,
+          "colorField": "intensity",
+          "colorMode": "flat",
+          "colorMap": "turbo",
+          "pointSize": 7,
+          "flatColor": "#2900ffff"
+        },
+        "/qr_reader/debug_image/compressed": {
+          "visible": false,
+          "cameraInfoTopic": "/camera_info",
+          "projectionFrameId": "odom"
+        },
+        "/pure_pursuit_controller/carrot": {
+          "type": "arrow",
+          "color": "#6600ffff",
+          "arrowScale": [
+            0.3,
+            0.03,
+            0.03
+          ],
+          "visible": true
+        },
+        "/map": {
+          "visible": true,
+          "colorMode": "map",
+          "drawBehind": true
+        },
+        "/finite_state_machine/route_markers": {
+          "visible": true,
+          "color": "#3335f2ff"
+        },
+        "/costmap/published_footprint": {
+          "visible": true,
+          "color": "#6b7cffff",
+          "lineWidth": 0.01
+        },
+        "/aruco_detector/poses": {
+          "visible": true,
+          "axisScale": 0.25
+        },
+        "/a_star_planner/visited_map": {
+          "visible": true,
+          "drawBehind": true,
+          "invalidColor": "#00cbffff",
+          "unknownColor": "#ffffffff"
+        },
+        "/a_star_planner/smoothed_path": {
+          "visible": true,
+          "lineWidth": 0.06
+        },
+        "/qr_pose_calculator/pose": {
+          "visible": true,
+          "axisScale": 0.3
+        }
+      },
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "synchronize": false,
+      "imageMode": {},
+      "foxglovePanelTitle": "RoboArena 4.0 Bird's-Eye View"
+    }
+  },
+  "globalVariables": {
+    "globalVariable": 0
+  },
+  "userNodes": {},
+  "playbackConfig": {
+    "speed": 1
+  },
+  "layout": {
+    "direction": "row",
+    "first": "Stack!25377ls",
+    "second": {
+      "direction": "row",
+      "first": "Stack!3l9u3k7",
+      "second": {
+        "first": "Stack!4kq2shp",
+        "second": {
+          "first": "3D!3p5cy77",
+          "second": "3D!38obisi",
+          "direction": "column",
+          "splitPercentage": 52.490526062882914
+        },
+        "direction": "row",
+        "splitPercentage": 30.465126751021604
+      },
+      "splitPercentage": 23.697644580002635
+    },
+    "splitPercentage": 18.10600979615064
+  }
+}

@@ -1,0 +1,63 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 120
+    use_sim_time: true
+
+    diff_drive_controller:
+      type: diff_drive_controller/DiffDriveController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    forks_controller:
+      type: velocity_controllers/JointGroupVelocityController
+
+ign_ros2_control:
+  ros__parameters:
+    gains:
+      forks_joint:
+        p: 5.0     
+        i: 0.1     
+        d: 0.05  
+
+diff_drive_controller:
+  ros__parameters:
+    left_wheel_names: ["wheel_left_joint"]
+    right_wheel_names: ["wheel_right_joint"]
+    
+    wheel_separation: 0.175                 # m
+    wheel_radius: 0.0475                    # m  
+    
+    use_stamped_vel: false
+    publish_rate: 60.0
+    cmd_vel_timeout: 0.5
+    
+    base_frame_id: base_footprint
+    odom_frame_id: odom
+    
+    linear.x.has_velocity_limits: true
+    linear.x.max_velocity: 0.15             # m/s   
+    linear.x.min_velocity: -0.15            # m/s    
+
+    linear.x.has_acceleration_limits: false
+    linear.x.max_acceleration: 0.3          # m/s^2      
+    linear.x.min_acceleration: -0.3         # m/s^2
+
+    angular.z.has_velocity_limits: true
+    angular.z.max_velocity: 0.3             # rad/s
+    angular.z.min_velocity: -0.3            # rad/s   
+    
+    angular.z.has_acceleration_limits: false
+    angular.z.max_acceleration: 1.0         # rad/s^2
+    angular.z.min_acceleration: -1.0        # rad/s^2
+
+forks_controller:
+  ros__parameters:
+    joints:
+      - forks_joint
+    interface_name: velocity
+
+gz_ros_control:
+  ros__parameters:
+    hold_joints: false
+    position_proportional_gain: 5.0

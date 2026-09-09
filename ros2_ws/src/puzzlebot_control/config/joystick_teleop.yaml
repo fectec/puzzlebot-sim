@@ -1,0 +1,26 @@
+joy:
+  ros__parameters:
+    device_id: 0
+    device_name: ""
+    deadzone: 0.1             
+    autorepeat_rate: 20.0
+    sticky_buttons: false
+    coalesce_interval_ms: 1
+
+joy_teleop:
+  ros__parameters:
+    move:
+      type: topic
+      interface_type: geometry_msgs/msg/TwistStamped
+      topic_name: /joy_teleop/cmd_vel_stamped
+      deadman_buttons: [5]
+          
+      axis_mappings:
+        twist-linear-x:   
+          axis: 1
+          scale: 0.15   # m/s 
+          offset: 0.0
+        twist-angular-z:  
+          axis: 3
+          scale: 0.30   # rad/s
+          offset: 0.0
